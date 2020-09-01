@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block main %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md"></div>
+			<div class="col-md">
+				<div class="form-group">
+					<form method="post" action="{{url_for('index')}}">
+							<div class="form-group">
+								<input class="form-control bg-transparent" name="password" type="text" 
+								autocomplete="off" spellcheck="false" > 
+							</div>
+
+							<button class="btn btn-success btn-block hack-btn" type="submit">
+								Submit
+							</button>
+	
+							{% with messages = get_flashed_messages() %}
+									{% if messages %}
+									<span style="color: red">{{messages[0]}}</span>
+									{% endif %}
+							{% endwith %}
+					</form>
+				</div>
+				
+			</div>
+			<div class="col-md"></div>
+		</div>
+	</div>
+{% endblock %}

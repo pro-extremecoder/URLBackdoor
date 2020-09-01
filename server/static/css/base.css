@@ -1,0 +1,37 @@
+main{
+    margin-top: 20%;
+    
+}
+
+h2{
+    color:white;
+}
+input{
+    color: white;
+}
+input:focus, input:active{
+    border: 2px solid #ced4da;
+
+}
+
+
+@font-face {
+    font-family: "Hacked-KerX"; 
+    src: url("/static/fonts/Hacked-KerX.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+}
+
+.main-title{
+    font-family: "Hacked-KerX";
+}
+
+.hack-btn:focus{
+    color: white;
+	outline: 0!important;
+	outline-color: transparent!important;
+	outline-width: 0!important;
+	outline-style: none!important;
+	box-shadow: 0 0 0 0 rgba(0,123,255,0)!important;
+	outline: none !important;
+}
