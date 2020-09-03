@@ -9,7 +9,8 @@ sio = socketio.Client()
 def open_url(data):
     url = data['url']
     print(f'url : {url}')
-    webbrowser.open(url)
+    #webbrowser.open(url)
+    webbrowser.get(using='opera').open_new_tab(url) # DEVELOPMENT VERSION
 
 @sio.on('deactivate')
 def deactivate():
@@ -20,4 +21,9 @@ def deactivate():
     sys.exit(0)
 
 
-sio.connect('http://localhost:5000', transports=['websocket'])
+try:
+    sio.connect('http://localhost:5000', transports=['websocket'])
+except socketio.exceptions.ConnectionError as e:
+    print(e)
+else:
+    print('Connected to server')
