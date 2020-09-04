@@ -1,13 +1,13 @@
 main{
-    margin-top: 20%;
-    
+    margin-top: 20%;  
 }
 
-h2{
-    color:white;
+label, h1, h2{
+    color:white !important;
 }
 input{
-    color: white;
+    color: white !important;
+    /*font-weight: bold !important;*/
 }
 input:focus, input:active{
     border: 2px solid #ced4da;
@@ -35,3 +35,11 @@ input:focus, input:active{
 	box-shadow: 0 0 0 0 rgba(0,123,255,0)!important;
 	outline: none !important;
 }
+.invalid-feedback{
+    font-weight: bold !important;
+}
+/*::placeholder { 
+    color: #66A3D2	 !important;
+    opacity: 1 !important; 
+    font-weight: bold !important;
+  }*/
