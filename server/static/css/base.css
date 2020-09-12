@@ -2,8 +2,12 @@ main{
     margin-top: 20%;  
 }
 
-label, h1, h2{
+span, label, h1, h2{
     color:white !important;
+}
+small{
+    color:white !important; 
+    font-weight: bold !important;
 }
 input{
     color: white !important;
@@ -13,6 +17,18 @@ input:focus, input:active{
     border: 2px solid #ced4da;
 
 }
+
+body{
+    background-image: url(/static/img/hack.JPG) !important;
+}
+
+.close:focus, .close:active{
+    outline: none !important;
+    border: none !important;
+}
+
+
+
 
 
 @font-face {
