@@ -17,7 +17,7 @@ class Conf:
 
 app = Flask(__name__)
 app.config.from_object(Conf)
-sio = SocketIO(app)
+sio = SocketIO(app, cors_allowed_origins=['http://debik.pp.ua', 'https://debik.pp.ua'])
 
 gunicorn_error_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers.extend(gunicorn_error_logger.handlers)
