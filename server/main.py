@@ -1,14 +1,16 @@
 import eventlet
 eventlet.monkey_patch()
+import os
+import logging
 from flask import Flask, render_template, session, request
 from flask import url_for, redirect, flash
 from flask_socketio import SocketIO, emit
 
-PASSWORD = 'asd'
+PASSWORD = os.getenv('PASSWORD')
 QUANTITY_OF_VIRUSES = 0 
 
 class Conf:
-    SECRET_KEY = "you lox1"
+    SECRET_KEY = os.getenv('SECRET_KEY')
     #SESSION_COOKIE_SECURE = True
     DEBUG = True
 
@@ -16,6 +18,11 @@ class Conf:
 app = Flask(__name__)
 app.config.from_object(Conf)
 sio = SocketIO(app)
+
+gunicorn_error_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers.extend(gunicorn_error_logger.handlers)
+app.logger.setLevel(logging.DEBUG)
+app.logger.debug('this will show in the log')
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -66,7 +73,7 @@ def confirm_deactivate():
     emit('get_quantity_of_viruses', { 'quantity' : QUANTITY_OF_VIRUSES }, broadcast=True)
 
 
-
-
 if __name__ == "__main__":
+    print(f"[SECRET_KEY] :: {app.config['SECRET_KEY']}")
+    print(f"[PASSWORD] :: {PASSWORD}")
     sio.run(app, debug=True)
