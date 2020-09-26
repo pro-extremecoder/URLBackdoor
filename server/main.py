@@ -17,7 +17,9 @@ class Conf:
 
 app = Flask(__name__)
 app.config.from_object(Conf)
-sio = SocketIO(app, cors_allowed_origins=['http://debik.pp.ua', 'https://debik.pp.ua', 'http://45.83.193.140', 'https://45.83.193.140'])
+sio = SocketIO(app, 
+	cors_allowed_origins=['http://debik.pp.ua', 'https://debik.pp.ua', 'http://45.83.193.140', 'https://45.83.193.140'],
+	engineio_logger=True)
 
 gunicorn_error_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers.extend(gunicorn_error_logger.handlers)
@@ -72,6 +74,10 @@ def confirm_deactivate():
     print('VIRUS DISCONNECTED')
     emit('finish_deactivating')
     emit('get_quantity_of_viruses', { 'quantity' : QUANTITY_OF_VIRUSES }, broadcast=True)
+
+@sio.on('connect')
+def connect():
+    app.logger.debug('CONNECTED')
 
 
 if __name__ == "__main__":

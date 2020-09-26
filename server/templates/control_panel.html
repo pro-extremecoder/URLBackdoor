@@ -58,9 +58,8 @@
 
 	<!--<span class="badge badge-pill badge-success" id="quantity"></span>-->
 	<script>
-			const socket = io({
-
-			});  
+		$(document).ready(function() {
+			const socket = io();
 
 			socket.on('connect', function() {
 					console.log('Connected');
@@ -81,6 +80,7 @@
 			$('#deactivate_btn').on('click', function() {
 					socket.emit('deactivate');
 			});
+		});
 
 	</script>
 {% endblock %}
