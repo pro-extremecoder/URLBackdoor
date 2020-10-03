@@ -55,13 +55,13 @@
 		
 	</div>
 
-
 	<!--<span class="badge badge-pill badge-success" id="quantity"></span>-->
-	<script>
+	<script type="text/javascript" charset='utf-8'>
 		$(document).ready(function() {
-			const socket = io();
 
+			const socket = io();
 			socket.on('connect', function() {
+		
 					console.log('Connected');
 					socket.emit('request_quantity');
 			});

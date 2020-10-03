@@ -27,6 +27,9 @@ app.logger.setLevel(logging.DEBUG)
 app.logger.debug('this will show in the log')
 app.logger.debug(f'PASSWORD: {PASSWORD}')
 
+@app.route('/test')
+def test():
+	return render_template('test.html')
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "POST":
