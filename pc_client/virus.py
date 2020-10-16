@@ -32,6 +32,10 @@ def finish():
     eventlet.sleep(0.5)
     sys.exit(0)
 
+@sio.on('ping')
+def ping():
+    sio.emit('pong')
+
 
 try:
     sio.connect('http://localhost:5000', transports=['websocket'])
