@@ -25,7 +25,7 @@ def ping_pong():
                 try:
                     viruses_status[sid] = False
                     sio.emit('ping', room=sid)
-                    eventlet.sleep(0.3)
+                    eventlet.sleep(1)
 
                     if viruses_status[sid] == False:
                         viruses_status.pop(sid)
